@@ -1,2 +1,9 @@
-export const incAction = { type: "INC" };
-export const decAction = { type: "DEC" };
+export const incAction = by => ({
+  type: "INC",
+  by
+});
+
+export const decAction = by => ({
+  type: "DEC",
+  by
+});

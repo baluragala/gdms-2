@@ -23,3 +23,15 @@ Redux
 
   Provider -(prop) store
 
+
+
+ UI (component) -> Provider(dispatch) -> store -> reducer -> store -> Provider(state)-> component 
+
+
+Redux (synchronous)
+-----
+ action -> store -> reducer -> Store
+
+
+middleware
+---------

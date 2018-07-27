@@ -10,9 +10,9 @@ class Counter extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.props.inc}>INC</button>
+        <button onClick={() => this.props.inc(100)}>INC</button>
         <span>{this.props.counter}</span>
-        <button onClick={this.props.dec}>DEC</button>
+        <button onClick={() => this.props.dec(500)}>DEC</button>
       </div>
     );
   }
@@ -26,8 +26,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    inc: () => dispatch(counterActions.incAction),
-    dec: () => dispatch(counterActions.decAction)
+    inc: by => dispatch(counterActions.incAction(by)),
+    dec: by => dispatch(counterActions.decAction(by))
   };
 }
 

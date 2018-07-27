@@ -4,7 +4,6 @@ const initialTimeState = {
 };
 
 export function timeReducer(prevState = initialTimeState, action) {
-  console.log("timeReducer", action);
   switch (action.type) {
     case "DATE":
       return { ...prevState, date: new Date().toISOString() };
