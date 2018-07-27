@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.0/redux.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div>
+    <button id="inc">INC</button>
+    <span id="result"></span>
+    <button id="dec">DEC</button>
+  </div>
+  <div>
+    <button id="date">DATE</button>
+    <span id="dateResult"></span>
+    <button id="time">TIME</button>
+    <span id="timeResult"></span>
+  </div>
+  <script>
+    /*
+
+    1. actions
+    2. reducers
+    3. store - 
+
+    */
+
+    const incBtn = document.querySelector("#inc");
+    const decBtn = document.querySelector("#dec");
+    const result = document.querySelector("#result");
+
+    const dateBtn = document.querySelector("#date");
+    const timeBtn = document.querySelector("#time");
+    const dateResult = document.querySelector("#dateResult");
+    const timeResult = document.querySelector("#timeResult");
+
+
+    incBtn.addEventListener("click", function () {
+      store.dispatch(incAction)
+    })
+
+    decBtn.addEventListener("click", function () {
+      store.dispatch(decAction)
+    })
+
+
+    dateBtn.addEventListener("click", function () {
+      store.dispatch(dateAction)
+    })
+
+    timeBtn.addEventListener("click", function () {
+      store.dispatch(timeAction)
+    })
+
+    //actions
+    let incAction = { type: 'INC' }
+    let decAction = { type: 'DEC' }
+
+    let dateAction = { type: 'DATE' }
+    let timeAction = { type: 'TIME' }
+
+    //reducer
+
+    const initalCounterState = { counter: 0 }
+    const initialTimeState = {
+      date: new Date().toISOString(), time: new Date().toLocaleTimeString()
+    }
+
+    function counterReducer(prevState = initalCounterState, action) {
+      console.log('counterReducer', action);
+      switch (action.type) {
+        case 'INC':
+          return { counter: prevState.counter + 1 }
+        case 'DEC':
+          return { counter: prevState.counter - 1 }
+        default:
+          return prevState;
+      }
+    }
+
+    function timeReducer(prevState = initialTimeState, action) {
+      console.log('timeReducer', action);
+      switch (action.type) {
+        case 'DATE':
+          return { ...prevState, date: new Date().toISOString() }
+        case 'TIME':
+          return { ...prevState, time: new Date().toLocaleTimeString() }
+        default:
+          return prevState;
+      }
+    }
+
+
+    const rootReducer = Redux.combineReducers({
+      counterState: counterReducer,
+      timeState: timeReducer
+    })
+    // store
+
+    const store = Redux.createStore(rootReducer);
+    console.log(store);
+    store.subscribe(function () {
+      console.log(store.getState());
+    })
+
+    store.subscribe(function () {
+      result.innerHTML = store.getState().counterState.counter;
+      dateResult.innerHTML = store.getState().timeState.date;
+      timeResult.innerHTML = store.getState().timeState.time;
+    })
+
+    //store.dispatch(incAction);
+
+  </script>
+</body>
+
+</html>

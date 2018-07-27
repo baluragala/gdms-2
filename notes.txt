@@ -1,0 +1,25 @@
+Redux 
+  - A JS lib
+  - manage application state
+
+
+  3 core principles
+  -----------------
+
+  1. Single source of thruth
+  2. State is read only
+  3. Changes must be made with pure functions
+
+
+  function add(a,b){
+    return a + b;
+  }
+
+  1. Store 
+  2. action
+  3. Reducers
+
+  React - Redux 
+
+  Provider -(prop) store
+
