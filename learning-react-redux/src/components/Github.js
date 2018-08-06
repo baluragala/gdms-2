@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import { getUsers } from "../actions/github";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 class Github extends Component {
+  static propTypes = {
+    users: PropTypes.array.isRequired,
+    isLoading: PropTypes.bool.isRequired,
+    getUsers: PropTypes.func.isRequired
+  };
   constructor(...args) {
     super(...args);
   }

@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Product List should render 3 products 1`] = `
+<div>
+  <ul>
+    <li>
+      iphone
+    </li>
+    <li>
+      pixel 
+    </li>
+    <li>
+      note
+    </li>
+    <li>
+      oneplus 6
+    </li>
+  </ul>
+  <button
+    onClick={[Function]}
+  >
+    Click here
+  </button>
+</div>
+`;
